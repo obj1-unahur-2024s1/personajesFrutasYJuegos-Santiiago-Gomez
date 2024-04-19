@@ -1,0 +1,37 @@
+import personajes.*
+import frutas.*
+import juegos.*
+
+test "martin esta feliz (al inicio)" {
+
+	assert.that(martin.esFeliz())
+}
+
+test "al principio no tiene hambre" {
+	
+	assert.that(martin.tieneHambre())
+}
+
+test "martin compra una manzana, la come y su energia queda en 10" {
+	martin.comprar(manzana)
+	martin.comer()
+	assert.equals(107, martin.energia())
+}
+
+test "martin juega al futbol y queda con hambre y energia en 90" {
+	martin.hacerDeporte(futbol,90)
+	assert.that(martin.tieneHambre())
+	assert.equals(90, martin.energia())
+}
+
+test "martin juega al voley 1 vez y no es feliz" {
+	martin.hacerDeporte(voley,10)
+	assert.notThat(martin.esFeliz()) 
+}
+
+test "martin juega 3 veces al voley y por lo tanto cantidad = 3" {
+	martin.hacerDeporte(voley,10)
+	martin.hacerDeporte(voley,20)
+	martin.hacerDeporte(voley,2)
+	assert.equals(3,martin.actividadDelDia())
+}
